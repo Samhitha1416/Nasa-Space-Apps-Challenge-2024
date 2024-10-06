@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exoplanet Visualizer</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Exoplanet Data Visualization</h1>
+        <form action="/visualize" method="POST">
+            <label for="planet_name">Enter Planet Name:</label>
+            <input type="text" id="planet_name" name="planet_name" required>
+            <button type="submit">Visualize</button>
+        </form>
+        
+        {% if plot_file %}
+            <h2>Visualization for {{ planet_name }}</h2>
+            <img src="{{ plot_file }}" alt="Visualization">
+        {% elif error %}
+            <p>{{ error }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>

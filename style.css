@@ -1,0 +1,194 @@
+
+  body {
+    background: url('assets/Home.png');
+    background-blend-mode: multiply;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 70px; /* Padding to avoid navbar overlap */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+
+
+/* Mobile responsiveness for the sidebar */
+@media(max-width: 991px) {
+  .sidebar {
+      background-color: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+  }
+}
+
+/* Ensure the navbar container uses flexbox */
+.navbar .container {
+  display: flex;
+  align-items: center; /* Vertically center both items */
+  justify-content: flex-start; /* Align items to the left */
+  
+}
+
+/* Style the logo (adjust the width if necessary) */
+#logo img {
+  width: 50px; /* Adjust the logo size */
+  height: auto; /* Keep the aspect ratio */
+  margin-right: 10px; /* Add space between the logo and heading */
+}
+
+/* Style the navbar heading */
+#navbar-heading {
+  font-size: 1.8rem; /* Adjust the font size */
+  color: white; /* Set the text color */
+  margin: 0; /* Remove extra margin */
+}
+
+/* Make the navbar fixed at the top of the page */
+.navbar {
+  position: fixed; /* Fix the navbar to the top */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Ensure it's above other content */
+  padding: 10px 0; /* Adjust padding for the navbar */
+}
+
+.image-container {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+overflow: hidden;
+z-index: -1; /* Sends the image behind other content */
+}
+  
+.background-image {
+width: 100%;
+height: 100%;
+object-fit: cover; /* Ensures the image covers the container */
+}
+html{
+  scroll-behavior: smooth;
+}
+
+section {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 2rem;
+}
+
+/* Style for the video container */
+.video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1; /* Sends the video behind other content */
+}
+
+#background-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover; /* Ensures the video covers the entire area */
+  z-index: -1; /* Push the video behind the content */
+}
+
+
+:root {
+  --main-color: GOLD; /* Neon color */
+  --black: #000;
+  --white: #fff;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  margin: 0; /* Remove default margin */
+  position: relative; /* Positioning context for absolute positioning */
+}
+
+.button-container {
+  display: flex;
+  justify-content: center; /* Center the buttons in the container */
+  align-items: center;
+  position: absolute; /* Positioning for bottom center */
+  bottom: 20px; /* Adjust as needed to position from the bottom */
+  width: 100%; /* Full width to ensure centering */
+}
+
+.btn {
+  display: block;
+  border-radius: 0.3rem;
+  padding: 0.4rem 0.8rem; /* Ensure consistent padding */
+  background: transparent;
+  color: var(--main-color);
+  cursor: pointer;
+  text-align: center;
+  flex-grow: 1; /* Allow buttons to have equal width */
+  max-width: 150px; /* Prevent buttons from becoming too large */
+  font-size: 0.8rem;
+  margin: 0 0.8rem;
+  border: 2px solid var(--main-color);
+  position: relative;
+  transition: 0.2s ease-in-out;
+  box-shadow: 0 0 4px var(--main-color), 0 0 8px var(--main-color);
+  text-decoration: none;
+  box-sizing: border-box; /* Include padding and border in width calculations */
+}
+
+.btn:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 0.5rem;
+  opacity: 0;
+  box-shadow: 0 0 8px var(--main-color), 0 0 15px var(--main-color);
+  transition: opacity 0.2s ease-in-out;
+}
+
+.btn:hover {
+  background: var(--main-color);
+  color: var(--black);
+  box-shadow: 0 0 18px var(--main-color), 0 0 35px var(--main-color);
+}
+
+.btn:hover:before {
+  opacity: 1;
+}
+
+@media (max-width: 480px) {
+  .btn {
+    flex-grow: 1;
+    width: auto; /* Responsive resizing */
+    font-size: 1rem;
+    padding: 0.3rem 0.8rem;
+    margin: 1.5rem auto;
+  }
+}
+
+
+#myVideo {
+  position: fixed;
+ 
+}
+
+
+
+
+
+
+ 
+
+ 

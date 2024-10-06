@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/x-icon" href="assets/logoc.png">
+  <title>Memory Card Game with Emojis - Space Quest</title>
+    
+    <style>
+      /* Import Google Font - Poppins */
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background: #6563FF;
+      }
+      .wrapper {
+        padding: 25px;
+        border-radius: 10px;
+        background: #F8F8F8;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      }
+      .cards, .card, .view {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .cards {
+        height: 400px;
+        width: 400px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+      .cards .card {
+        cursor: pointer;
+        list-style: none;
+        user-select: none;
+        position: relative;
+        perspective: 1000px;
+        transform-style: preserve-3d;
+        height: calc(100% / 4 - 10px);
+        width: calc(100% / 4 - 10px);
+      }
+      .card.shake {
+        animation: shake 0.35s ease-in-out;
+      }
+      @keyframes shake {
+        0%, 100% {
+          transform: translateX(0);
+        }
+        20% {
+          transform: translateX(-13px);
+        }
+        40% {
+          transform: translateX(13px);
+        }
+        60% {
+          transform: translateX(-8px);
+        }
+        80% {
+          transform: translateX(8px);
+        }
+      }
+      .card .view {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        border-radius: 7px;
+        background: #fff;
+        pointer-events: none;
+        backface-visibility: hidden;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        transition: transform 0.25s linear;
+        font-size: 2rem;
+      }
+      .card .back-view {
+        transform: rotateY(-180deg);
+      }
+      .card.flip .back-view {
+        transform: rotateY(0);
+      }
+      .card.flip .front-view {
+        transform: rotateY(180deg);
+      }
+    </style>
+</head>
+<body class="vh-100 overflow-hidden">
+  <!--Navbar-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+   
+    <div class="container">
+      <div id="logo">
+        <img src="assets/logoc.png" alt="Space Quest">
+    </div>
+      <!--Logo-->
+      <a class="navbar-brand fs-4" href="#">Space Quest</a>
+      <!--Toggle Btn-->
+      <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!--SideBar-->
+      <div class="sidebar offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <!--Sidebar Header-->
+        <div class="offcanvas-header text-white border-bottom">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Space Quest</h5>
+          <button type="button" class="btn-close bth-close-white shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <!--Sidebar Body-->
+        <div class="offcanvas-body d-flex flex-column p-4">
+          <ul class="navbar-nav justify-content-end fs-5 flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a class="nav-link" href="learn.html">Learn</a>
+            </li>
+            <li class="nav-item mx-2">
+                <a class="nav-link" href="gallery.html">Gallery</a> 
+              </li>
+      
+    
+              </ul>
+            </li>
+          </ul>
+         
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+      <ul class="cards">
+        <li class="card">
+          <div class="view front-view">❓</div>
+          <div class="view back-view"></div>
+        </li>
+        <li class="card">
+          <div class="view front-view">❓</div>
+          <div class="view back-view"></div>
+        </li>
+        <li class="card">
+          <div class="view front-view">❓</div>
+          <div class="view back-view"></div>
+        </li>
+        <li class="card">
+          <div class="view front-view">❓</div>
+          <div class="view back-view"></div>
+        </li>
+        <li class="card">
+          <div class="view front-view">❓</div>
+          <div class="view back-view"></div>
+        </li>
+        <li class="card">
+          <div class="view front-view">❓</div>
+          <div class="view back-view"></div>
+        </li>
+        <li class="card">
+          <div class="view front-view">❓</div>
+          <div class="view back-view"></div>
+        </li>
+        <li class="card">
+          <div class="view front-view">❓</div>
+          <div class="view back-view"></div>
+        </li>
+        <li class="card">
+          <div class="view front-view">❓</div>
+          <div class="view back-view"></div>
+        </li>
+        <li class="card">
+          <div class="view front-view">❓</div>
+          <div class="view back-view"></div>
+        </li>
+        <li class="card">
+          <div class="view front-view">❓</div>
+          <div class="view back-view"></div>
+        </li>
+        <li class="card">
+          <div class="view front-view">❓</div>
+          <div class="view back-view"></div>
+        </li>
+        <li class="card">
+          <div class="view front-view">❓</div>
+          <div class="view back-view"></div>
+        </li>
+        <li class="card">
+          <div class="view front-view">❓</div>
+          <div class="view back-view"></div>
+        </li>
+        <li class="card">
+          <div class="view front-view">❓</div>
+          <div class="view back-view"></div>
+        </li>
+        <li class="card">
+          <div class="view front-view">❓</div>
+          <div class="view back-view"></div>
+        </li>
+      </ul>
+    </div>
+    <div class="button-container">
+      <a href="quiz.html" class="btn prev-btn">Journey Back</a>
+      <a href="topic2.html" class="btn next-btn">Explore Ahead</a>
+    </div>
+    <div class="image-container">
+      <img src="assets/game.png" alt="Background Image" id="background-image" class="background-image">
+      </div>
+
+    <script>
+      const cards = document.querySelectorAll(".card");
+
+      let matched = 0;
+      let cardOne, cardTwo;
+      let disableDeck = false;
+
+      const emojis = ['🌍', '🚀', '🛰', '🛸', '🌞', '🌜', '🔭', '👽'];
+      let emojiPairs = [...emojis, ...emojis]; // Duplicate for pairs
+
+      // Function to shuffle the emoji pairs
+      function shuffle(array) {
+        array.sort(() => Math.random() - 0.5);
+      }
+
+      // Function to handle card flip event
+      function flipCard({target: clickedCard}) {
+        // Avoid flipping the same card or multiple cards during animations
+        if (cardOne !== clickedCard && !disableDeck) {
+          clickedCard.classList.add("flip");
+
+          // If this is the first card
+          if (!cardOne) {
+            cardOne = clickedCard;
+            return;
+          }
+
+          // This is the second card
+          cardTwo = clickedCard;
+          disableDeck = true; // Disable further clicks until cards are compared
+
+          let cardOneEmoji = cardOne.querySelector(".back-view").textContent;
+          let cardTwoEmoji = cardTwo.querySelector(".back-view").textContent;
+
+          // Compare the two flipped cards
+          matchCards(cardOneEmoji, cardTwoEmoji);
+        }
+      }
+
+      // Function to check if two cards match
+      function matchCards(emoji1, emoji2) {
+        if (emoji1 === emoji2) {
+          // Cards matched
+          matched++;
+          if (matched === emojis.length) {
+            // If all pairs are matched, reshuffle the cards
+            setTimeout(() => {
+              shuffleCard();
+            }, 1000);
+          }
+          // Remove the click event from matched cards
+          cardOne.removeEventListener("click", flipCard);
+          cardTwo.removeEventListener("click", flipCard);
+          resetTurn(); // Reset card state
+        } else {
+          // Cards didn't match - add shaking effect
+          setTimeout(() => {
+            cardOne.classList.add("shake");
+            cardTwo.classList.add("shake");
+          }, 400);
+
+          // After shaking, flip the cards back and reset
+          setTimeout(() => {
+            cardOne.classList.remove("shake", "flip");
+            cardTwo.classList.remove("shake", "flip");
+            resetTurn();
+          }, 1200);
+        }
+      }
+
+      // Function to reset the card state after each turn
+      function resetTurn() {
+        cardOne = cardTwo = null;
+        disableDeck = false; // Re-enable the deck for the next turn
+      }
+
+      // Function to shuffle and reset the cards for a new game
+      function shuffleCard() {
+        matched = 0;
+        disableDeck = false;
+        cardOne = cardTwo = null;
+
+        shuffle(emojiPairs); // Shuffle the emoji pairs
+
+        // Assign each card a new emoji from the shuffled array
+        cards.forEach((card, i) => {
+          card.classList.remove("flip"); // Reset flip state
+          let backView = card.querySelector(".back-view");
+          backView.textContent = emojiPairs[i]; // Set emoji as text content
+          card.addEventListener("click", flipCard); // Re-enable card click event
+        });
+      }
+
+      // Shuffle cards at the start of the game
+      shuffleCard();
+
+      // Add event listeners to each card
+      cards.forEach(card => {
+        card.addEventListener("click", flipCard);
+      });
+    </script>
+  </body>
+</html>
+  

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style.css">
+  <title>Space Quest</title>
+  <link rel="icon" type="image/x-icon" href="assets/logoc.png">
+</head>
+<body class="vh-100 overflow-hidden">
+  <!--Navbar-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+   
+    <div class="container">
+      <div id="logo">
+        <img src="assets/logoc.png" alt="Space Quest">
+    </div>
+      <!--Logo-->
+      <a class="navbar-brand fs-4" href="#">Space Quest</a>
+      <!--Toggle Btn-->
+      <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!--SideBar-->
+      <div class="sidebar offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <!--Sidebar Header-->
+        <div class="offcanvas-header text-white border-bottom">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Space Quest</h5>
+          <button type="button" class="btn-close bth-close-white shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <!--Sidebar Body-->
+        <div class="offcanvas-body d-flex flex-column p-4">
+          <ul class="navbar-nav justify-content-end fs-5 flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a class="nav-link" href="learn.html">Learn</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a class="nav-link" href="gallery.html">Gallery</a> <!-- New Gallery link -->
+            </li>
+      
+    
+              </ul>
+            </li>
+          </ul>
+         
+        </div>
+      </div>
+    </div>
+  </nav>
+
+<!-- Video Section -->
+<video autoplay loop id="myVideo">
+  <source src="assets/NASA-24.mp4" type="video/mp4">
+</video>
+
+<!-- Video Control Buttons (Play/Pause and Mute/Unmute) -->
+<div class="video-controls">
+  <button id="video-control" class="btn-control" onclick="togglePlayPause()">
+    <span id="play-icon">▶️</span> <!-- Pause icon by default -->
+  </button>
+
+  <button id="mute-control" class="btn-control" onclick="toggleMute()">
+    <span id="mute-icon">🔊</span> <!-- Unmute icon by default -->
+  </button>
+</div>
+
+
+
+<!-- Script for controlling video play/pause and mute/unmute -->
+<script>
+  // Get the video element
+  // Reference to the video element
+const video = document.getElementById('myVideo'); // Make sure the video has id="video"
+
+// Set default play and unmute states
+window.onload = function() {
+  video.play(); // Auto-play video when loaded
+  video.muted = false; // Make sure it's unmuted by default
+};
+
+// Play/Pause functionality
+function togglePlayPause() {
+  const playIcon = document.getElementById('play-icon');
+  
+  if (video.paused) {
+    video.play();
+    playIcon.textContent = '▶️'; // Change to pause icon
+  } else {
+    video.pause();
+    playIcon.textContent = '⏸️'; // Change to play icon
+  }
+}
+
+// Mute/Unmute functionality
+function toggleMute() {
+  const muteIcon = document.getElementById('mute-icon');
+
+  if (video.muted) {
+    video.muted = false;
+    muteIcon.textContent = '🔊'; // Change to unmute icon
+  } else {
+    video.muted = true;
+    muteIcon.textContent = '🔇'; // Change to mute icon
+  }
+}
+</script>
+
+<!-- CSS for Styling Buttons -->
+<style>
+  /* Make video cover the background */
+  video {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1; /* Video behind other elements */
+  }
+
+  /* Video Controls (Play/Pause and Mute/Unmute) */
+  .video-controls {
+    position: fixed;
+    bottom: 20px; /* Distance from the bottom */
+    margin-left: 68%;
+    transform: translateX(-50%); /* Adjust for centering */
+    z-index: 1000; /* Ensure the buttons are above the video */
+    display: flex; /* Flexbox for button alignment */
+    gap: 10px; /* Space between buttons */
+  }
+
+  .btn-control {
+    background-color: rgba(0, 0, 0, 0.5); /* Transparent background */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    outline: none;
+  }
+
+  .btn-control:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  @media (max-width: 480px) {
+    .btn-control {
+      font-size: 16px; /* Adjust font size for mobile */
+      padding: 8px 15px; /* Adjust padding for mobile */
+    }
+  }
+</style>
+
+
+<div class="button-container">
+    <a href="learn.html" class="btn prev-btn">Journey Back</a>
+    <a href="topic1.html" class="btn next-btn">Explore Ahead</a>
+</div>
+</body>
+</html>

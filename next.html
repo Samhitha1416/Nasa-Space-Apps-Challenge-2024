@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="assets/logoc.png">
+    <title>Photos</title>
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/ica-rubrik-black');
+        @import url('https://fonts.cdnfonts.com/css/poppins');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #D2D2D2;
+            background-image:
+                repeating-linear-gradient(
+                    to right, transparent 0 100px,
+                    #25283b22 100px 101px
+                ),
+                repeating-linear-gradient(
+                    to bottom, transparent 0 100px,
+                    #25283b22 100px 101px
+                );
+            overflow: hidden; /* Prevent scrollbars */
+        }
+
+        .banner {
+            width: 100%;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .banner .slider {
+            position: absolute;
+            width: 200px;
+            height: 250px;
+            top: 10%;
+            left: calc(50% - 100px);
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+            animation: autoRun 20s linear infinite;
+            z-index: 2;
+        }
+
+        @keyframes autoRun {
+            from {
+                transform: perspective(1000px) rotateX(-16deg) rotateY(0deg);
+            }
+            to {
+                transform: perspective(1000px) rotateX(-16deg) rotateY(360deg);
+            }
+        }
+
+        .banner .slider .item {
+            position: absolute;
+            inset: 0 0 0 0;
+            transform: 
+                rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+                translateZ(550px);
+        }
+
+        .banner .slider .item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Background video styling */
+        .background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0; /* Ensure the video stays in the background */
+        }
+
+        .banner .content {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(1400px, 100vw);
+            height: max-content;
+            padding-bottom: 100px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .banner .content h1 {
+            font-family: 'ICA Rubrik';
+            font-size: 16em;
+            line-height: 1em;
+            color: #25283B;
+            position: relative;
+        }
+
+        .banner .content h1::after {
+            position: absolute;
+            inset: 0 0 0 0;
+            content: attr(data-content);
+            z-index: 2;
+            -webkit-text-stroke: 2px #d2d2d2;
+            color: transparent;
+        }
+
+        .button-container {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3; /* Ensure buttons are above the other content */
+        }
+
+        .button-container .btn {
+            margin: 0 10px; /* Add some space between buttons */
+        }
+
+        @media screen and (max-width: 767px) {
+            .banner .slider {
+                width: 100px;
+                height: 150px;
+                left: calc(50% - 50px);
+            }
+
+            .banner .content h1 {
+                font-size: 5em;
+            }
+        }
+    </style>
+</head>
+<body style="background-color: black;">
+    
+
+    <div class="banner">
+        <!-- Background Video -->
+        <video class="background-video" autoplay loop muted>
+            <source src="next-bg.mp4" type="video/mp4">
+        </video>
+
+        <div class="slider" style="--quantity: 10">
+            <div class="item" style="--position: 1"><img src="images/1.jpg" alt=""></div>
+            <div class="item" style="--position: 2"><img src="images/2.jpg" alt=""></div>
+            <div class="item" style="--position: 3"><img src="images/3.jpg" alt=""></div>
+            <div class="item" style="--position: 4"><img src="images/4.jpg" alt=""></div>
+            <div class="item" style="--position: 5"><img src="images/5.jpg" alt=""></div>
+            <div class="item" style="--position: 6"><img src="images/6.jpg" alt=""></div>
+            <div class="item" style="--position: 7"><img src="images/7.jpg" alt=""></div>
+            <div class="item" style="--position: 8"><img src="images/8.jpg" alt=""></div>
+            <div class="item" style="--position: 9"><img src="images/9.jpg" alt=""></div>
+            <div class="item" style="--position: 10"><img src="images/10.jpg" alt=""></div>
+        </div>
+        <div class="content">
+            <h1>Exoplanets</h1>
+        </div>
+        
+    </div>
+    
+</body>
+</html>
